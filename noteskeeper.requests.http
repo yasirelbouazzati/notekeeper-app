@@ -1,0 +1,29 @@
+
+GET http://localhost:8080/notes
+
+
+POST  http://localhost:8080/notes
+
+Content-Type: application/json
+
+{
+	"name": "Yasir el Bouazzati",
+	"description": "I'm the best web designer",
+	"important": true,
+	"status": "pending",
+	"dueDate": "1/1/2024"
+}
+
+
+PUT  http://localhost:8080/notes/sBHLr-1714336266170
+
+
+Content-Type: application/json
+
+
+{
+	"status": "in progress"
+}
+
+
+DELETE  http://localhost:8080/notes/512Zv-1714414789107
