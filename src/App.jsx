@@ -1,3 +1,5 @@
+
+import { useState } from "react";
 import { useNote } from "./hooks";
 import { NoteList } from "./components/NoteList";
 import {CreateNoteForm} from "./components/CreateNoteForm";
