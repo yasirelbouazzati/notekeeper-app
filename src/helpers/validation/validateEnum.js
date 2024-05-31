@@ -1,5 +1,3 @@
-
-
 const allowedStatus = ["pending", "in progress", "done"];
 
 function validateEnum(note) {
@@ -10,6 +8,6 @@ function validateEnum(note) {
   }
 }
 
-console.log(validateEnum("pending"))
+console.log(validateEnum("pending"));
 
 export default validateEnum;

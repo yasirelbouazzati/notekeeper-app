@@ -1,6 +1,6 @@
 import validateEnum from "../helpers/validation/validateEnum";
 import validateNonEmpty from "../helpers/validation/validateNonEmpty";
-import validateType  from "../helpers/validation/validateType";
+import validateType from "../helpers/validation/validateType";
 import notesService from "../services/notes/notesService";
 import { useUpdateForm } from "../hooks";
 export const UpdateNoteForm = ({
@@ -52,7 +52,7 @@ export const UpdateNoteForm = ({
           editNote.description,
           editNote.important,
           editNote.status,
-          editNote.due_date
+          editNote.due_date,
         )
         .then(() => {
           notesService.getAllNote().then((data) => {

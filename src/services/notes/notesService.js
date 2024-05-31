@@ -1,8 +1,7 @@
 const baseUrl = `${import.meta.env.VITE_URL}`;
 
 const getAllNote = () => {
-  return fetch(baseUrl)
-    .then((response) => response.json());
+  return fetch(baseUrl).then((response) => response.json());
 };
 
 const createNote = (newNote) => {
@@ -21,7 +20,7 @@ const createNote = (newNote) => {
   }).then((response) => response.json());
 };
 
-const updateNote = ( id, name, description, important, status, due_Date ) => {
+const updateNote = (id, name, description, important, status, due_Date) => {
   return fetch(`${baseUrl}/${id}`, {
     method: "PUT",
     headers: {
@@ -39,14 +38,13 @@ const updateNote = ( id, name, description, important, status, due_Date ) => {
 
 const deleteNote = (id) => {
   return fetch(`${baseUrl}/${id}`, {
-    method: 'DELETE'
-  })
-  .then(response => response.json());
+    method: "DELETE",
+  }).then((response) => response.json());
 };
 
 export default {
   getAllNote: getAllNote,
   createNote: createNote,
   updateNote: updateNote,
-  deleteNote: deleteNote
+  deleteNote: deleteNote,
 };

@@ -1,24 +1,21 @@
-import validateEnum  from "../helpers/validation/validateEnum";
+import validateEnum from "../helpers/validation/validateEnum";
 import validateNonEmpty from "../helpers/validation/validateNonEmpty";
 import validateType from "../helpers/validation/validateType";
 import notesService from "../services/notes/notesService";
 import { useCreateForm } from "../hooks";
-export const CreateNoteForm = ({
-  note,
-  setNote,
-}) => {
-    const {
-      newName,
-      newDescription,
-      newImportant,
-      newStatus,
-      newDue_Date,
-      handleNewNameValue,
-      handleNewDescriptionValue,
-      handleNewImportantValue,
-      handleNewStatusValue,
-      handleNewDue_DataValue,
-    } = useCreateForm();
+export const CreateNoteForm = ({ note, setNote }) => {
+  const {
+    newName,
+    newDescription,
+    newImportant,
+    newStatus,
+    newDue_Date,
+    handleNewNameValue,
+    handleNewDescriptionValue,
+    handleNewImportantValue,
+    handleNewStatusValue,
+    handleNewDue_DataValue,
+  } = useCreateForm();
   const addNewNote = (event) => {
     event.preventDefault();
     const newNote = {

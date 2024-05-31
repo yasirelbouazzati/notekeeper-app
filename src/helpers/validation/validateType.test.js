@@ -13,7 +13,7 @@ test("Validating note object types", () => {
   const invalidNote = {
     name: "Invalid Note",
     description: "This is an invalid note",
-    important: "true", 
+    important: "true",
     status: "pending",
     due_date: "2024-05-15",
   };

@@ -1,5 +1,3 @@
-
-
 function validateNonEmpty(note) {
   console.log(note);
   if (
