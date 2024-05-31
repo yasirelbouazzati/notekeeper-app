@@ -1,11 +1,9 @@
-
-import React, { useState } from "react";
 import { useNote } from "./hooks";
 import { NoteList } from "./components/NoteList";
 import {CreateNoteForm} from "./components/CreateNoteForm";
 
 const App = () => {
-  const [updateFlag, setUpdateFlag] = useState(false);
+  const [,setUpdateFlag] = useState(false);
   const {note, handleNote} = useNote();
 
   const handleUpdate = () => {
