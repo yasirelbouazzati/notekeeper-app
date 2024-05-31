@@ -1,10 +1,12 @@
 
 import React, { useState } from "react";
-import NoteList from "./components/NoteList";
-import CreateNoteForm from "./components/CreateNoteForm";
+import { useNote } from "./hooks";
+import { NoteList } from "./components/NoteList";
+import {CreateNoteForm} from "./components/CreateNoteForm";
 
 const App = () => {
   const [updateFlag, setUpdateFlag] = useState(false);
+  const {note, handleNote} = useNote();
 
   const handleUpdate = () => {
     setUpdateFlag((prevFlag) => !prevFlag);
@@ -13,8 +15,8 @@ const App = () => {
   return (
     <div>
       <h1>Notekeeper App</h1>
-      <CreateNoteForm onCreate={handleUpdate} />
-      <NoteList />
+      <CreateNoteForm onCreate={handleUpdate} note={note} setNote={handleNote} />
+      <NoteList note={note} setNote={handleNote}  />
     </div>
   );
 };

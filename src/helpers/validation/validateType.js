@@ -5,7 +5,7 @@ function validateType(note) {
     typeof note.description === "string" &&
     typeof note.important === "boolean" &&
     typeof note.status === "string" &&
-    typeof note.dueDate === "string" 
+    typeof note.due_date === "string" 
   ) {
     return true;
   } else {

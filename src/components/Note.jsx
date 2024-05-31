@@ -1,29 +1,28 @@
-import React from "react";
-import notesService from "../services/notes/notesService";
-
-const Note = ({ note, onUpdate, setNotes }) => {
-  const handleDelete = async () => {
-    await notesService.deleteNote(note.id).then(()=>{
-      notesService.getAllNote().then((notes)=>{
-        setNotes(notes.notes);
-      })
-    });
-
-  };
-
-  console.log(note.name);
-
-  return (
-    <div>
-      <h3>{note.name}</h3>
-      <p>{note.description}</p>
-      <p>{note.important.toString()}</p>
-      <p>{note.status}</p>
-      <p>{note.due_date}</p>
-      <p>{note.created_at}</p>
-      <button onClick={handleDelete}>Delete</button>
-    </div>
-  );
+import { DeleteNoteButton } from "./DeleteNoteButton";
+import { UpdateNoteButton } from "./UpdateNoteButton";
+export const Note = ({ note, setNote }) => {
+  return note.map((noteInformation, i) => (
+    <ul key={i}>
+      <li>{noteInformation.name} </li>
+      <li>{noteInformation.description} </li>
+      <li>{noteInformation.important.toString()}</li>
+      <li>{noteInformation.status} </li>
+      <li>{noteInformation.due_date}</li>
+      <li>{noteInformation.created_at}</li>
+      <UpdateNoteButton
+        setNote={setNote}
+        noteId={noteInformation.id}
+        noteName={noteInformation.name}
+        noteDescription={noteInformation.description}
+        noteImportant={noteInformation.important}
+        noteStatus={noteInformation.status}
+        noteDue_Date={noteInformation.due_date}
+      />
+      <DeleteNoteButton
+        noteId={noteInformation.id}
+        noteName={noteInformation.name}
+        setNote={setNote}
+      />
+    </ul>
+  ));
 };
-
-export default Note;

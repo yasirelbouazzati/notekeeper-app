@@ -1,44 +1,98 @@
-
-import React, { useState } from 'react';
-import notesService from '../services/notes/notesService';
-
-const CreateNoteForm = ({ onCreate }) => {
-  const [note, setNote] = useState({ name: '', description: '' });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setNote((prevNote) => ({ ...prevNote, [name]: value }));
+import validateEnum  from "../helpers/validation/validateEnum";
+import validateNonEmpty from "../helpers/validation/validateNonEmpty";
+import validateType from "../helpers/validation/validateType";
+import notesService from "../services/notes/notesService";
+import { useCreateForm } from "../hooks";
+export const CreateNoteForm = ({
+  note,
+  setNote,
+}) => {
+    const {
+      newName,
+      newDescription,
+      newImportant,
+      newStatus,
+      newDue_Date,
+      handleNewNameValue,
+      handleNewDescriptionValue,
+      handleNewImportantValue,
+      handleNewStatusValue,
+      handleNewDue_DataValue,
+    } = useCreateForm();
+  const addNewNote = (event) => {
+    event.preventDefault();
+    const newNote = {
+      name: newName,
+      description: newDescription,
+      important: Boolean(newImportant),
+      status: newStatus,
+      due_date: newDue_Date,
+    };
+    if (
+      validateType(newNote) &&
+      validateNonEmpty(newNote) &&
+      validateEnum(newNote.status)
+    ) {
+      notesService.createNote(newNote).then((data) => {
+        setNote([...note, data]);
+      });
+    }
   };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await notesService.createNote(note);
-    onCreate();
-    setNote({ name: '', description: '' });
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        value={note.name}
-        onChange={handleChange}
-        placeholder="Name"
-        required
-      />
-      <input
-        type="text"
-        name="description"
-        value={note.description}
-        onChange={handleChange}
-        placeholder="Description"
-        required
-      />
-      <button type="submit">Create Note</button>
-    </form>
+    <div className="container">
+      <h2>Add a New Note:</h2>
+      <form onSubmit={addNewNote}>
+        <div className="form-group">
+          <label htmlFor="new-Name">Name:</label>
+          <input
+            id="new-Name"
+            value={newName}
+            onChange={handleNewNameValue}
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="new-Description">Description:</label>
+          <input
+            id="new-Description"
+            value={newDescription}
+            onChange={handleNewDescriptionValue}
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="new-Important">Important:</label>
+          <input
+            id="new-Important"
+            value={newImportant}
+            onChange={handleNewImportantValue}
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="new-Status">Status:</label>
+          <input
+            id="new-Status"
+            value={newStatus}
+            onChange={handleNewStatusValue}
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="new-Due_Date">Due Date:</label>
+          <input
+            id="new-Due_Date"
+            value={newDue_Date}
+            onChange={handleNewDue_DataValue}
+            className="form-control"
+          />
+        </div>
+        <div>
+          <button type="submit" className="button">
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
-
-export default CreateNoteForm;
-
