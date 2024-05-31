@@ -7,7 +7,7 @@ test("Validating note object types", () => {
     description: "This is a valid note",
     important: true,
     status: "pending",
-    dueDate: "2024-05-15",
+    due_date: "2024-05-15",
   };
 
   const invalidNote = {
@@ -15,7 +15,7 @@ test("Validating note object types", () => {
     description: "This is an invalid note",
     important: "true", 
     status: "pending",
-    dueDate: "2024-05-15",
+    due_date: "2024-05-15",
   };
 
   expect(validateType(validNote)).toBe(true);
