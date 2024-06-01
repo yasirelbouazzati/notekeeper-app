@@ -9,5 +9,4 @@ Currently, two official plugins are available:
 
 Link Netlify: https://notekeeper-app-yasir.netlify.app/
 
-
 Link Render: https://json-server-deploy-a5kn.onrender.com/
