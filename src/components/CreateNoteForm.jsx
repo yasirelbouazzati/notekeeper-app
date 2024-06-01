@@ -5,7 +5,7 @@ import notesService from "../services/notes/notesService";
 import { useCreateForm } from "../hooks";
 import "./CreateNoteForm.css";
 
-export const CreateNoteForm = ({ note, setNote }) => {
+export const CreateNoteForm = ({ setNote }) => {
   const {
     newName,
     newDescription,
