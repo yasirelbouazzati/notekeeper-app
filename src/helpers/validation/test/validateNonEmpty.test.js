@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 
-import validateNonEmpty from "./validateNonEmpty.js";
+import validateNonEmpty from "../validateNonEmpty.js";
 
 test("Validating non-empty note fields", () => {
   const validNote = {

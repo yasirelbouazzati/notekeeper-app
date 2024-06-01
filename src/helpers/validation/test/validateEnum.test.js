@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 
-import validateEnum from "./validateEnum.js";
+import validateEnum from "../validateEnum.js";
 
 test("Validating note status enum", () => {
   const validNote = {

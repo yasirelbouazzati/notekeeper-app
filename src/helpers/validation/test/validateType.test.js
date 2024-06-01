@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import validateType from "./validateType";
+import validateType from "../validateType";
 
 test("Validating note object types", () => {
   const validNote = {
