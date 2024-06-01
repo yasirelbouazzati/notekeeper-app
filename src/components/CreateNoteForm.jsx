@@ -57,17 +57,16 @@ export const CreateNoteForm = ({ note, setNote }) => {
             className="form-control"
           />
         </div>
+        <label htmlFor="new-Important">Important:</label>
+        <input
+          type="checkbox"
+          id="new-Important"
+          checked={newImportant}
+          onChange={handleNewImportantValue}
+          className="form-control"
+        />
         <div className="form-group">
-          <label htmlFor="new-Important">Important:</label>
-          <input
-            id="new-Important"
-            value={newImportant}
-            onChange={handleNewImportantValue}
-            className="form-control"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="new-Status">Status:</label>
+          <label htmlFor="new-Status">Status(In Progress/Pending/Done):</label>
           <input
             id="new-Status"
             value={newStatus}
@@ -76,7 +75,7 @@ export const CreateNoteForm = ({ note, setNote }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="new-Due_Date">Due Date:</label>
+          <label htmlFor="new-Due_Date">Due Date (01/01/2003):</label>
           <input
             id="new-Due_Date"
             value={newDue_Date}

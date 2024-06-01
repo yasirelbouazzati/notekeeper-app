@@ -1,7 +1,22 @@
 const baseUrl = `${import.meta.env.VITE_URL}`;
 
+// Manejo de errores generalizado
+const handleResponse = (response) => {
+  if (!response.ok) {
+    return response.json().then((error) => {
+      throw new Error(error.message || "Error desconocido");
+    });
+  }
+  return response.json();
+};
+
 const getAllNote = () => {
-  return fetch(baseUrl).then((response) => response.json());
+  return fetch(baseUrl)
+    .then(handleResponse)
+    .catch((error) => {
+      console.error("Error fetching notes:", error);
+      throw error;
+    });
 };
 
 const createNote = (newNote) => {
@@ -17,7 +32,12 @@ const createNote = (newNote) => {
       status: newNote.status,
       due_date: newNote.due_date,
     }),
-  }).then((response) => response.json());
+  })
+    .then(handleResponse)
+    .catch((error) => {
+      console.error("Error creating note:", error);
+      throw error;
+    });
 };
 
 const updateNote = (id, name, description, important, status, due_Date) => {
@@ -33,18 +53,28 @@ const updateNote = (id, name, description, important, status, due_Date) => {
       status: status,
       due_date: due_Date,
     }),
-  }).then((response) => response.json());
+  })
+    .then(handleResponse)
+    .catch((error) => {
+      console.error("Error updating note:", error);
+      throw error;
+    });
 };
 
 const deleteNote = (id) => {
   return fetch(`${baseUrl}/${id}`, {
     method: "DELETE",
-  }).then((response) => response.json());
+  })
+    .then(handleResponse)
+    .catch((error) => {
+      console.error("Error deleting note:", error);
+      throw error;
+    });
 };
 
 export default {
-  getAllNote: getAllNote,
-  createNote: createNote,
-  updateNote: updateNote,
-  deleteNote: deleteNote,
+  getAllNote,
+  createNote,
+  updateNote,
+  deleteNote,
 };
