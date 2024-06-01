@@ -1,6 +1,5 @@
 const baseUrl = `${import.meta.env.VITE_URL}`;
 
-
 const handleResponse = (response) => {
   if (!response.ok) {
     return response.json().then((error) => {
