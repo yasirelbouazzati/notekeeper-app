@@ -3,7 +3,7 @@ import { useState } from "react";
 export const useCreateForm = () => {
   const [newName, setName] = useState("");
   const [newDescription, setDescription] = useState("");
-  const [newImportant, setImportant] = useState(false); // Inicializado como booleano
+  const [newImportant, setImportant] = useState(false); 
   const [newStatus, setStatus] = useState("");
   const [newDue_Date, setDue_Date] = useState("");
 
@@ -16,7 +16,7 @@ export const useCreateForm = () => {
   };
 
   const handleNewImportantValue = (event) => {
-    setImportant(event.target.checked); // Actualizar usando checked para checkbox
+    setImportant(event.target.checked); 
   };
 
   const handleNewStatusValue = (event) => {

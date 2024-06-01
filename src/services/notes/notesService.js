@@ -1,6 +1,6 @@
 const baseUrl = `${import.meta.env.VITE_URL}`;
 
-// Manejo de errores generalizado
+
 const handleResponse = (response) => {
   if (!response.ok) {
     return response.json().then((error) => {
